@@ -16,13 +16,14 @@
     {{-- Custom Style --}}
     <style>
         :root {
-            --main-color: #ff0000;
-            --second-color: #780116;
-            --section-bg-color: #fffffc;
+            --main-color: #fcf300;
+            --second-color: #ff7b00;
+            --bg-color: #1c110a;
+            --section-bg-color: #3f3244;
         }
 
         body {
-            background-color: var(--section-bg-color);
+            background-color: var(--bg-color);
             font-family: 'Poppins', sans-serif;
             color: #333;
             margin: 0;
@@ -35,28 +36,56 @@
             align-items: center;
             justify-content: center;
         }
-        .side{
-            height: 80px;
-            width: 80px;
-            border-radius: 50%;
-            margin: 20px;
-            background-color: yellow;
-            animation: lightchange 0.5s ease-in-out infinite;
-        }
-        @keyframes lightchange {
-            0%{background-color: #80ffdb;}
-            0%{background-color: #80ffdb;}
-            0%{background-color: #80ffdb;}
-            0%{background-color: #80ffdb;}
-        }
+
         .auth-card {
-            background: #fff;
+            background: var(--bg-color);
             border-radius: 16px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
             width: auto;
             padding: 2.5rem;
+            position: relative;
+
             transition: all 0.3s ease-in-out;
         }
+
+        @keyframes transf {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-3px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .auth-card::before,
+        .auth-card::after {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            animation: transf 5s ease-in-out infinite;
+            background: conic-gradient(from 0deg at center,
+                    var(--main-color),
+                    var(--second-color),
+                    var(--second-color),
+                    var(--main-color));
+            border-radius: inherit;
+            z-index: -2;
+            padding: 2px;
+        }
+
+        .auth-card::after {
+            filter: blur(10px);
+        }
+
+
+
 
         .auth-card:hover {
             box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
@@ -99,20 +128,14 @@
 </head>
 
 <body>
-<div>
-@include('components.navbar')
+    <div>
+        @include('components.navbar')
 
     </div>
     <div class="auth-container">
-        <div class="side">
-
-        </div>
         <div class="auth-card">
             {{-- Main content from pages like login/register --}}
             @yield('content')
-        </div>
-        <div class="side">
-
         </div>
     </div>
 
