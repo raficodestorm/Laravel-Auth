@@ -40,8 +40,7 @@
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 420px;
+            width: auto;
             padding: 2.5rem;
             transition: all 0.3s ease-in-out;
         }
@@ -87,6 +86,10 @@
 </head>
 
 <body>
+<div>
+@include('components.navbar')
+
+    </div>
     <div class="auth-container">
         <div class="auth-card">
             {{-- Main content from pages like login/register --}}

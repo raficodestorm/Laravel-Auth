@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       {{-- Logout button --}}
       <form method="POST" action="{{ route('logout') }}" class="mb-3">
         @csrf
@@ -13,7 +13,10 @@
         </a>
       </form>
     </div>
-    <div class="col-6">
+    <div class="col-4">
+      <a href="{{ route('profile.edit') }}">Edit profile</a>
+    </div>
+    <div class="col-4">
       <a href="{{ route('admin.users.create') }}">Add Manager</a>
     </div>
   </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/admin', function () {
         return view('dashboards.admin');
     })->name('dashboard.admin')->middleware('role:admin');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    // Update Profile Information
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Delete Account (optional, if you want to keep Breeze's delete)
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // admin user management
