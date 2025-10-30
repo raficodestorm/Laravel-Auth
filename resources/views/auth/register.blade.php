@@ -1,52 +1,59 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<!-- resources/views/auth/register.blade.php -->
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h2>Register (General User)</h2>
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
-        <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <label>Fullname</label>
+            <input name="fullname" value="{{ old('fullname') }}" required>
+            @error('fullname')<div>{{ $message }}</div>@enderror
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div>
+            <label>Username</label>
+            <input name="username" value="{{ old('username') }}" required>
+            @error('username')<div>{{ $message }}</div>@enderror
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div>
+            <label>Email</label>
+            <input name="email" value="{{ old('email') }}" required>
+            @error('email')<div>{{ $message }}</div>@enderror
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            @error('password')<div>{{ $message }}</div>@enderror
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        <div>
+            <label>Confirm Password</label>
+            <input type="password" name="password_confirmation" required>
+        </div>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+        <div>
+            <label>Phone</label>
+            <input name="phone" value="{{ old('phone') }}">
+        </div>
+
+        <div>
+            <label>Address</label>
+            <textarea name="address">{{ old('address') }}</textarea>
+        </div>
+
+        <div>
+            <label>Profile Picture</label>
+            <input type="file" name="profile_photo">
+        </div>
+
+        <div>
+            <button type="submit">Register</button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+@endsection
