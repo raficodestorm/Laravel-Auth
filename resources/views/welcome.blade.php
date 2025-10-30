@@ -8,6 +8,6 @@
   -webkit-text-stroke: 2px #000;
 ">Laravel</h1>
   <p class="text-center" style=" font-size: 50px; font-weight: 900; color: #008000;">Multi-Authentication System</p>
-  <p class="text-center" style="font-size: 50px; font-weight: 700; color: #fc2f00; -webkit-text-stroke: 2px #006400;">developed by S A Rafi</p>
+  <p class="text-center" style="font-size: 50px; font-weight: 700; color: #000814; font-style:italic;">developed by S A Rafi</p>
 </div>
 @endsection

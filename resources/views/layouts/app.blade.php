@@ -35,7 +35,20 @@
             align-items: center;
             justify-content: center;
         }
-
+        .side{
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            margin: 20px;
+            background-color: yellow;
+            animation: lightchange 0.5s ease-in-out infinite;
+        }
+        @keyframes lightchange {
+            0%{background-color: #80ffdb;}
+            0%{background-color: #80ffdb;}
+            0%{background-color: #80ffdb;}
+            0%{background-color: #80ffdb;}
+        }
         .auth-card {
             background: #fff;
             border-radius: 16px;
@@ -91,9 +104,15 @@
 
     </div>
     <div class="auth-container">
+        <div class="side">
+
+        </div>
         <div class="auth-card">
             {{-- Main content from pages like login/register --}}
             @yield('content')
+        </div>
+        <div class="side">
+
         </div>
     </div>
 
