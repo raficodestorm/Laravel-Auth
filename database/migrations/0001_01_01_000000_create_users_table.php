@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            // optional fields (for admin-created manager include father_name, nid_no)
+            // fields for admin-created manager 
             $table->string('father_name')->nullable();
             $table->string('phone')->nullable()->index();
             $table->text('address')->nullable();
